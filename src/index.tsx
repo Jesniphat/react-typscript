@@ -18,11 +18,13 @@ import { createStore } from 'redux';
 import { enthusiasm } from './reducers/index';
 // import { StoreState } from './types/index';
 
-const store = createStore((enthusiasm), {
-  enthusiasmLevel: 1,
-  languageName: 'TypeScript',
-  other: 'Jesse'
-});
+const store = createStore(enthusiasm, 
+  {
+    enthusiasmLevel: 1,
+    languageName: 'TypeScript',
+    other: 'Jesse'
+  }
+);
 
 // ReactDOM.render(
 //   <Hello name='TypeScript' enthusiasmLevel={10} />,
