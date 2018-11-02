@@ -13,8 +13,6 @@ export interface DecrementEnthusiasm {
     number: number;
 }
 
-export type EnthusiasmAction = IncrementEnthusiasm | DecrementEnthusiasm;
-
 export function incrementEnthusiasm(number: number = 1): IncrementEnthusiasm {
     return {
         type: constants.INCREMENT_ENTHUSIASM,
@@ -28,3 +26,5 @@ export function decrementEnthusiasm(number: number = (-1)): DecrementEnthusiasm 
         number
     }
 }
+
+export type EnthusiasmAction = IncrementEnthusiasm | DecrementEnthusiasm;
