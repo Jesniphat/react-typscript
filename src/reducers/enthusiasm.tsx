@@ -14,13 +14,13 @@ export function enthusiasm(state: StoreState = enthusiasmStatus, action: Enthusi
       return {
         ...state,
         enthusiasmLevel: state.enthusiasmLevel +  action.number,
-        other: state.other + (state.enthusiasmLevel +  action.number).toString()
+        other: (state.enthusiasmLevel +  action.number).toString()
       };
     case DECREMENT_ENTHUSIASM:
       return {
         ...state,
         enthusiasmLevel: Math.max(1, state.enthusiasmLevel + action.number),
-        other: state.other + (state.enthusiasmLevel +  action.number).toString()
+        other: (state.enthusiasmLevel +  action.number).toString()
       };
     default:
       return {
