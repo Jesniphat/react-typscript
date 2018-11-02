@@ -15,16 +15,10 @@ import { Provider } from 'react-redux';
 // import Hello from './components/StatefulHello';
 
 import { createStore } from 'redux';
-import { enthusiasm } from './reducers/index';
+import reducer from './reducers/index';
 // import { StoreState } from './types/index';
 
-const store = createStore(enthusiasm, 
-  {
-    enthusiasmLevel: 1,
-    languageName: 'TypeScript',
-    other: 'Jesse'
-  }
-);
+const store = createStore(reducer);
 
 // ReactDOM.render(
 //   <Hello name='TypeScript' enthusiasmLevel={10} />,
