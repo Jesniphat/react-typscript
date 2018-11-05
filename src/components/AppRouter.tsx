@@ -7,23 +7,7 @@ function Index(){
   return (
         <div>
           <h2>Index</h2>
-          <nav>
-            <ul>
-              <li>
-                <Link to="/home">Home</Link>
-              </li>
-              <li>
-                <Link to="/about/">About</Link>
-              </li>
-              <li>
-                <Link to="/users/">Users</Link>
-              </li>
-              <li>
-                <Link to="/hello/">Hello</Link>
-              </li>
-            </ul>
-          </nav>
-         </div> 
+        </div> 
   );
 };
 
@@ -42,7 +26,8 @@ function Users (){
 const routes: any[] = [
   {
     path: '/',
-    component: Index
+    component: Index,
+    // exact: true
   },
   {
     path: '/home',
@@ -66,10 +51,27 @@ export default function AppRouter() {
   return (
     <Router>
       <div>
+        <nav>
+          <ul>
+            <li>
+              <Link to="/home">Home</Link>
+            </li>
+            <li>
+              <Link to="/about/">About</Link>
+            </li>
+            <li>
+              <Link to="/users/">Users</Link>
+            </li>
+            <li>
+              <Link to="/hello/">Hello</Link>
+            </li>
+          </ul>
+        </nav>
         {routes.map((route, index) => (
           <Route
             key={index}
             path={route.path}
+            exact={route.exact}
             component={route.component}
             // render={props => (
             //   <route.component {...props} routes={route.routes} />
