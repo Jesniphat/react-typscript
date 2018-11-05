@@ -3,35 +3,78 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 import Hello from '../containers/Hello';
 
-const Index = () => <h2>Home</h2>;
-const About = () => <h2>About</h2>;
-const Users = () => <h2>Users</h2>;
+function Index(){
+  return (
+        <div>
+          <h2>Index</h2>
+          <nav>
+            <ul>
+              <li>
+                <Link to="/home">Home</Link>
+              </li>
+              <li>
+                <Link to="/about/">About</Link>
+              </li>
+              <li>
+                <Link to="/users/">Users</Link>
+              </li>
+              <li>
+                <Link to="/hello/">Hello</Link>
+              </li>
+            </ul>
+          </nav>
+         </div> 
+  );
+};
 
-export default function AppRouter() { 
+function Home(){
+  return <h2>Home</h2>
+}
+
+function  About(){
+  return <h2>About</h2>;
+};
+
+function Users (){
+  return <h2>Users</h2>;
+}
+
+const routes: any[] = [
+  {
+    path: '/',
+    component: Index
+  },
+  {
+    path: '/home',
+    component: Home
+  },
+  {
+    path: '/about',
+    component: About
+  },
+  {
+    path: '/users',
+    component: Users
+  },
+  {
+    path: '/hello',
+    component: Hello
+  }
+];
+
+export default function AppRouter() {
   return (
     <Router>
       <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/about/">About</Link>
-            </li>
-            <li>
-              <Link to="/users/">Users</Link>
-            </li>
-            <li>
-              <Link to="/hello/">Hello</Link>
-            </li>
-          </ul>
-        </nav>
-
-        <Route path="/" exact component={Index} />
-        <Route path="/about/" component={About} />
-        <Route path="/users/" component={Users} />
-        <Route path='/hello/' component={Hello}/>
+        {routes.map((route, index) => (
+          <Route
+            key={index}
+            path={route.path}
+            render={props => (
+              <route.component {...props} routes={route.routes} />
+            )}
+          />
+        ))}
       </div>
     </Router>
   );
