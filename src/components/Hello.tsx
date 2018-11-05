@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-export interface Props {
+interface Props {
   name: any;
   enthusiasmLevel?: number;
   other?: string;
@@ -9,15 +9,23 @@ export interface Props {
   onDecrement?: any; // function
 }
 
-class Hello extends React.Component<Props, object> {
+interface State {
+  amount: number;
+}
+
+class Hello extends React.Component<Props, State> {
   public constructor(props: Props) {
     super(props);
+    this.state = {
+      amount: 1
+    };
   }
 
   public add($this: any, data: any) {
-    console.log($this);
-    console.log(data);
-    this.props.onIncrement(5);
+    this.props.onIncrement(this.state.amount);
+    this.setState(
+      {amount: this.state.amount + 1}
+    );
   }
 
   render() {
@@ -31,8 +39,10 @@ class Hello extends React.Component<Props, object> {
       <div className="hello">
         <div className="greeting">
           Hello {other + name + getExclamationMarks(enthusiasmLevel)}
+          {this.state.amount}
         </div>
         <div>
+          <input value={this.state.amount} />
           <button onClick={this.add.bind(this, 'set')}>Test</button>
           <button onClick={onDecrement}>-</button>
           <button onClick={onIncrement}>+</button>
