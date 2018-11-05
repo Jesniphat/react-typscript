@@ -70,9 +70,10 @@ export default function AppRouter() {
           <Route
             key={index}
             path={route.path}
-            render={props => (
-              <route.component {...props} routes={route.routes} />
-            )}
+            component={route.component}
+            // render={props => (
+            //   <route.component {...props} routes={route.routes} />
+            // )}
           />
         ))}
       </div>

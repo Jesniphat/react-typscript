@@ -16,12 +16,15 @@ import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import reducer from './reducers/index';
 import AppRouter from './components/AppRouter';
+import { BrowserRouter } from 'react-router-dom';
 
 const store = createStore(reducer);
 
 ReactDOM.render(
   <Provider store={store}>
-    <AppRouter />
+    <BrowserRouter>
+      <AppRouter />
+    </BrowserRouter>
   </Provider>,
   document.getElementById('root') as HTMLElement
 );
