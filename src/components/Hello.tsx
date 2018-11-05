@@ -10,6 +10,10 @@ export interface Props {
 }
 
 class Hello extends React.Component<Props, object> {
+  public constructor(props: Props) {
+    super(props);
+  }
+
   render() {
     const { name, enthusiasmLevel = 1, other, onIncrement, onDecrement } = this.props;
 
