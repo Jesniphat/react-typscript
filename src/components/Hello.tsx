@@ -5,13 +5,19 @@ export interface Props {
   enthusiasmLevel?: number;
   other?: string;
   // add redux
-  onIncrement?: () => void;
-  onDecrement?: () => void;
+  onIncrement?: any; // function
+  onDecrement?: any; // function
 }
 
 class Hello extends React.Component<Props, object> {
   public constructor(props: Props) {
     super(props);
+  }
+
+  public add($this: any, data: any) {
+    console.log($this);
+    console.log(data);
+    this.props.onIncrement(5);
   }
 
   render() {
@@ -27,6 +33,7 @@ class Hello extends React.Component<Props, object> {
           Hello {other + name + getExclamationMarks(enthusiasmLevel)}
         </div>
         <div>
+          <button onClick={this.add.bind(this, 'set')}>Test</button>
           <button onClick={onDecrement}>-</button>
           <button onClick={onIncrement}>+</button>
         </div>

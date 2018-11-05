@@ -21,7 +21,12 @@ export function mapStateToProps(state: EnthusiasmState) {
 
 export function mapDispatchToProps(dispatch: Dispatch<actions.EnthusiasmAction>) {
   return {
-    onIncrement: () => dispatch(actions.incrementEnthusiasm()),
+    onIncrement: (t: number = 1) => {
+      if((typeof t) === 'object') {
+        t = 1;
+      }
+      dispatch(actions.incrementEnthusiasm(t))
+    },
     onDecrement: () => dispatch(actions.decrementEnthusiasm()),
   }
 }
