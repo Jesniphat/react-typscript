@@ -4,8 +4,8 @@ import { INCREMENT_ENTHUSIASM, DECREMENT_ENTHUSIASM } from '../constants';
 
 const enthusiasmStatus = {
   enthusiasmLevel: 1,
-    languageName: 'TypeScript',
-    other: 'Jesse'
+  languageName: 'TypeScript',
+  other: 'Jesse'
 };
 
 export function enthusiasm(state: StoreState = enthusiasmStatus, action: EnthusiasmAction): StoreState {

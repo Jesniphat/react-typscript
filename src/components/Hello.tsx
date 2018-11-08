@@ -10,7 +10,7 @@ interface Props {
 }
 
 interface State {
-  amount: number;
+  amount: any;
 }
 
 class Hello extends React.Component<Props, State> {
@@ -21,11 +21,17 @@ class Hello extends React.Component<Props, State> {
     };
   }
 
-  public add($this: any, data: any) {
-    this.props.onIncrement(this.state.amount);
-    this.setState(
-      {amount: this.state.amount + 1}
-    );
+  public add(e: any): void {
+    if (this.state.amount != null && this.state.amount > 0) {
+      this.props.onIncrement(parseInt(this.state.amount));
+    }
+  }
+
+  public handleInput(e: any): void {
+    const value = e.target.value;
+    this.setState({
+      amount: value
+    });
   }
 
   render() {
@@ -39,11 +45,12 @@ class Hello extends React.Component<Props, State> {
       <div className="hello">
         <div className="greeting">
           Hello {other + name + getExclamationMarks(enthusiasmLevel)}
+          <br/>
           {this.state.amount}
         </div>
         <div>
-          <input value={this.state.amount} />
-          <button onClick={this.add.bind(this, 'set')}>Test</button>
+          <input type="number" value={this.state.amount} onChange={() => this.handleInput(event)} />
+          <button onClick={() => this.add(event)}>Test</button>
           <button onClick={onDecrement}>-</button>
           <button onClick={onIncrement}>+</button>
         </div>
@@ -55,7 +62,7 @@ class Hello extends React.Component<Props, State> {
 export default Hello;
 
 // helpers
-function getExclamationMarks(numChars: number) {
+function getExclamationMarks(numChars: any) {
   console.log(numChars);
   return Array(numChars + 1).join('!');
 }
