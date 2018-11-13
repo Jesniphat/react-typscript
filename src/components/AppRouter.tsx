@@ -84,7 +84,7 @@ export default function AppRouter() {
             exact={route.exact}
             // component={route.component}
             render={props => (
-              <route.component {...props} routes={route.routes} name={route.name} enthusiasmLevel={route.enthusiasmLevel} />
+              <route.component {...props} /*routes={route.routes} for sub component*/ name={route.name} enthusiasmLevel={route.enthusiasmLevel} />
             )}
           />
         ))}
