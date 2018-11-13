@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import './components/Hello.css';
-import registerServiceWorker from './registerServiceWorker';
+// import registerServiceWorker from './registerServiceWorker';
 
 // nolmal
 // import Hello from './components/Hello';
@@ -36,4 +36,4 @@ ReactDOM.render(
   document.getElementById('root') as HTMLElement
 );
 
-registerServiceWorker();
+// registerServiceWorker();
